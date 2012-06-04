@@ -18,3 +18,17 @@ control:
         launch choice
       end
 
+    launch_terminal: |
+      launch CONFIG['prefer']['terminal']
+
+    launch_sudo_terminal: |
+      launch 'sudo', CONFIG['prefer']['terminal']
+
+    launch_browser: |
+      launch CONFIG['prefer']['browser']
+
+    launch_filer: |
+      launch CONFIG['prefer']['filer']
+
+    launch_editor: |
+      launch CONFIG['prefer']['editor']

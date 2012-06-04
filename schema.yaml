@@ -13,6 +13,12 @@ mapping:
     sequence:
       - type: any
         required: true
+  'prefer': &optional_hash
+    type: map
+    required: false
+    mapping:
+      =:
+        type: any
   'control':
     type: map
     required: true

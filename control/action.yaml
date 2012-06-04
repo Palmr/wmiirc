@@ -1,6 +1,5 @@
 control:
   action:
-
     action_menu: |
       if choice = key_menu(actions, 'action:', :action)
         action choice

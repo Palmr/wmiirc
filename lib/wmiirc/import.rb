@@ -10,6 +10,8 @@ module Import
       next if imported[path]
       imported[path] = true
 
+			puts "Importing: #{path}"
+
       begin
         data = YAML.load_file(path)
       rescue => error

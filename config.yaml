@@ -1,0 +1,66 @@
+import:
+  - status/*.yaml
+  - control/*.yaml
+#  - control/action/*.yaml
+  - control/keyboard/personal.yaml
+  - control/keyboard/client.yaml
+  - control/keyboard/focus.yaml
+  - control/keyboard/launch.yaml
+  - control/keyboard/layout.yaml
+  - control/keyboard/move.yaml
+  - display/color/palmr.yaml
+  - display/*.yaml
+
+prefer:
+  terminal: xterm
+  browser:  firefox
+  editor:   vim
+  filer:    thunar
+
+
+display:
+  font: "xft:DejaVuSans:pixelsize=13"
+  bar: top
+  border: 1
+  column:
+    mode: default
+    rule: |
+      /1/ -> 75+25
+      /gimp/ -> 17+83+41
+      /.*/ -> 50+50
+
+  client:
+    'tags=gimp':
+      - '^gimp:'
+    'tags=ff':
+      - '^firefox:'
+    'floating=on':
+      - '^<nil>:<nil>:Event Tester$' # xev
+      - '^x[a-z]+:' # x11
+  refresh: 30
+  status:
+    - network:
+        params:
+          interface: eth0
+    - loadavg:
+    - disk:
+        params:
+          path: $HOME
+    - memory:
+    - weather:
+        refresh: 300 # 5 minutes
+        params:
+          location: 'london, uk'
+          metric: true
+    - clock:
+        params:
+          format: '%H:%M %a %d/%m'
+    - sysmenu: 
+
+#script:
+#  after: focus_view "1:main"
+#script:
+#  after: |
+#    launch_terminal
+#    curr_view.instance_eval('tile_rightward')
+

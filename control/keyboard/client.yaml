@@ -1,0 +1,7 @@
+import:
+  - control/action/client.yaml
+
+control:
+  keyboard_action:
+    ${mod}-f: client_fullscreen!
+    ${mod}-Shift-c: client_kill

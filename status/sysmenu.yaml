@@ -1,0 +1,25 @@
+status:
+  sysmenu:
+    label: |
+      ["\u2770", ""]
+
+    script: |
+      def menu
+        levels = ["Shutdown", "Reboot", "Help File"]
+        if choice = click_menu(levels, "System Menu")
+          if choice == "Shutdown"
+            `sudo shutdown -h now`
+          elsif choice == "Reboot"
+            `sudo shutdown -r now`
+          else
+            dialog `cat ~/wmii_help.txt`
+          end
+        end
+      end
+
+    control:
+      action:
+        shutdown_from_menu: self.menu
+
+      mouse_action:
+        right_click: shutdown_from_menu

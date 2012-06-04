@@ -1,0 +1,8 @@
+#
+# Colors taken from the gentoo prompt
+#
+display:
+  color:
+    desktop: "#111111"
+    normal:  "#dddddd #343434 #444444"
+    focus:   "#111111 #C8E7A8 #444444"

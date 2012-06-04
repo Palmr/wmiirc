@@ -1,8 +1,2 @@
-control:
-  action:
-    desktop: |
-      'xsetroot', '-solid', CONFIG['display']['color']['desktop']
-
 script:
-  after:
-    - action 'desktop'
+  after: launch 'xsetroot', '-solid', CONFIG['display']['color']['desktop']

@@ -1,0 +1,12 @@
+import:
+  - control/action/send.yaml
+
+control:
+  keyboard_action:
+    ${move}-${up}: send_group_up
+    ${move}-${down}: send_group_down
+    ${move}-${left}: send_group_left
+    ${move}-${right}: send_group_right
+    ${move}-${floating}: send_group_overlay!
+
+    ${move}-t: send_group_view_menu

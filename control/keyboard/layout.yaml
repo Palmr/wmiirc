@@ -1,0 +1,13 @@
+import:
+  - control/action/layout.yaml
+
+control:
+  keyboard_action:
+    ${layout}-d: layout_column_equal
+    ${layout}-Shift-d: layout_view_equal
+
+    ${layout}-s: layout_column_stack
+    ${layout}-Shift-s: layout_view_stack
+
+    ${layout}-m: layout_column_max
+    ${layout}-Shift-m: layout_view_max

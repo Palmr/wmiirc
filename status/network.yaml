@@ -1,9 +1,9 @@
 status:
   network:
     params:
-      ifconfig_bin: ifconfig
+      ifconfig_bin: ip addr show
       iwconfig_bin: iwconfig
-      interface: lo
+      interface: eth0
 
     script: |
       def ifconfig
@@ -21,11 +21,12 @@ status:
 
       if alive and ip_addr
         color = 'normal'
-        rx_bytes, tx_bytes = ifconfig.scan(/\((\d+(?:\.\d+)? \w+)\)/)
-        stats = ['@', ip_addr, "\u25BE", rx_bytes, "\u25B4", tx_bytes]
+        #rx_bytes, tx_bytes = ifconfig.scan(/\((\d+(?:\.\d+)? \w+)\)/)
+        #stats = ['@', ip_addr, "\u25BE", rx_bytes, "\u25B4", tx_bytes]
+        stats = ['@', ip_addr]
       else
         color = 'error'
-        stats = []
+        stats = [alive, ip_addr]
       end
 
       if self.iwconfig =~ /ESSID:"(.+?)"/
@@ -36,7 +37,8 @@ status:
 
     control:
       action:
-        network_details: dialog [iwconfig, ifconfig].join
+        network_details: |
+          dialog `ip addr`
 
       mouse_action:
         left_click: network_details

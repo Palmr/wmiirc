@@ -21,7 +21,7 @@ class << self
     log_standard_outputs
     terminate_other_instances
     load_user_config
-    spawn 'witray' # relaunch to accomodate changes in screen resolution
+    #spawn 'witray' # relaunch to accomodate changes in screen resolution
     enter_event_loop
 
   rescue SystemExit
