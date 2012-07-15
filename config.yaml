@@ -8,6 +8,7 @@ import:
   - control/keyboard/launch.yaml
   - control/keyboard/layout.yaml
   - control/keyboard/move.yaml
+  - control/keyboard/resize.yaml
   - display/color/palmr.yaml
   - display/*.yaml
 
@@ -33,15 +34,18 @@ display:
     'tags=gimp':
       - '^gimp:'
     'tags=ff':
-      - '^firefox:'
+      - 'Firefox:'
+    'tags=dev':
+      - '.*? Eclipse SDK.*'
     'floating=on':
       - '^<nil>:<nil>:Event Tester$' # xev
       - '^x[a-z]+:' # x11
   refresh: 30
   status:
+    - spacer: 
     - network:
         params:
-          interface: eth0
+          interface: wlan0
     - loadavg:
     - disk:
         params:
@@ -52,6 +56,8 @@ display:
         params:
           location: 'london, uk'
           metric: true
+    #- thermal: 
+    - battery: 
     - clock:
         params:
           format: '%H:%M %a %d/%m'

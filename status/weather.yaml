@@ -8,23 +8,28 @@ status:
       metric: 
 
     label: |
-      barometer = Barometer.new(@location)
-      @weather = barometer.measure
-      status = @weather.current.icon
+      begin
+        barometer = Barometer.new(@location)
+        @weather = barometer.measure
+        status = @weather.current.icon
 
-      icon =
-        case status
-        when /cloud|overcast/ then "\u2601"
-        when /rain|shower/ then "\u2602"
-        when /snow|hail/ then "\u2603"
-        when /lightning/ then "\u2607"
-        when /thunder/ then "\u2608"
-        else "\u2600"
-        end
+        icon =
+          case status
+          when /cloud|overcast/ then "\u2601"
+          when /rain|shower/ then "\u2602"
+          when /snow|hail/ then "\u2603"
+          when /lightning/ then "\u2607"
+          when /thunder/ then "\u2608"
+          else "\u2600"
+          end
 
-      temperature = @weather.temperature.to_s(@metric).tr('CF', "\u2103\u2109")
+        temperature = @weather.temperature.to_s(@metric).tr('CF', "\u2103\u2109")
 
-      [icon, temperature, status]
+        [icon, temperature]
+
+      rescue SocketError
+        ["\u2601", "--"]
+      end
 
     control:
       action:

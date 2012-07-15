@@ -1,0 +1,10 @@
+import:
+  - control/action/resize.yaml
+
+control:
+  keyboard_action:
+    ${resize}-${up}: resize_client_up
+    ${resize}-${down}: resize_client_down
+    ${resize}-${left}: resize_client_left
+    ${resize}-${right}: resize_client_right
+

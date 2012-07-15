@@ -1,7 +1,7 @@
 status:
   sysmenu:
     label: |
-      ["\u2770", ""]
+      ["\u2707", ""]
 
     script: |
       def menu

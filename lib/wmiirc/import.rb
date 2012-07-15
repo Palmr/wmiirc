@@ -1,6 +1,8 @@
 require 'wmiirc'
 require 'yaml'
 
+YAML::ENGINE.yamler = 'syck'
+
 module Wmiirc
 module Import
   extend self

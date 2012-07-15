@@ -6,8 +6,8 @@ control:
     ${mod}-Return: launch_terminal
     ${mod}-Shift-Return: launch_sudo_terminal
     
-    ${mod}-e: launch_browser
-    ${mod}-i: launch_filer
+    ${mod}-i: launch_browser
+    ${mod}-e: launch_filer
     
     ${mod}-a: action_menu
     ${mod}-p: launch_menu
