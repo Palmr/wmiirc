@@ -23,14 +23,16 @@ status:
         color = 'normal'
         #rx_bytes, tx_bytes = ifconfig.scan(/\((\d+(?:\.\d+)? \w+)\)/)
         #stats = ['@', ip_addr, "\u25BE", rx_bytes, "\u25B4", tx_bytes]
-        stats = ['@', ip_addr]
+        #stats = ['@', ip_addr]
+        stats = [ip_addr]
       else
         color = 'error'
         stats = [alive, ip_addr]
       end
 
       if self.iwconfig =~ /ESSID:"(.+?)"/
-        stats.unshift "\u223F", $1
+      #  stats.unshift "\u223F", $1
+        stats.unshift "\u223F"
       end
 
       [color, @interface, stats]
@@ -38,7 +40,8 @@ status:
     control:
       action:
         network_details: |
-          dialog `ip addr`
+          dialog `#{@ifconfig_bin} #{@interface}`
+          dialog `#{@iwconfig_bin} #{@interface}`
 
       mouse_action:
         left_click: network_details
