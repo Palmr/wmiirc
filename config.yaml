@@ -10,6 +10,7 @@ import:
   - control/keyboard/move.yaml
   - control/keyboard/resize.yaml
   - display/color/palmr.yaml
+  - display/desktop/feh.yaml
   - display/*.yaml
 
 prefer:
@@ -69,4 +70,7 @@ display:
 #  after: |
 #    launch_terminal
 #    curr_view.instance_eval('tile_rightward')
+script:
+  after: action 'desktop'
+
 
