@@ -28,7 +28,8 @@ status:
         [icon, temperature]
 
       rescue SocketError
-        ["\u2601", "--"]
+        puts "Caught weather SocketError"
+        ["\u2601", "??"]
       end
 
     control:
