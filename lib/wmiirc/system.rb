@@ -1,3 +1,6 @@
+#!/usr/bin/env ruby -w
+# encoding: utf-8
+
 module Wmiirc
 
   ##
@@ -6,11 +9,24 @@ module Wmiirc
   #
   def launch *args
     if label = curr_client.label.read rescue nil
-      label.split(/[\s\[\]\{\}\(\)<>"':]+/).reverse_each do |word|
-        if File.exist? path = File.expand_path(word)
-          path = File.dirname(path) unless File.directory? path
-          Dir.chdir(path){ launch! *args }
-          return
+      begin
+        label.split(/[\s\[\]\{\}\(\)<>"':]+/).reverse_each do |word|
+          if File.exist? path = File.expand_path(word)
+            path = File.dirname(path) unless File.directory? path
+            Dir.chdir(path){ launch! *args }
+            return
+          end
+        end
+      rescue Encoding::CompatibilityError
+        puts "Encoding error, forcing encoding to UTF-8"
+        label = label.force_encoding('utf-8')
+        puts "Result of forced encoding conversion: #{label}"
+        label.split(/[\s\[\]\{\}\(\)<>"':]+/).reverse_each do |word|
+          if File.exist? path = File.expand_path(word)
+            path = File.dirname(path) unless File.directory? path
+            Dir.chdir(path){ launch! *args }
+            return
+          end
         end
       end
     end

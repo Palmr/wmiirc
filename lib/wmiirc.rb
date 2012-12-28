@@ -1,3 +1,9 @@
+#!/usr/bin/env ruby -w
+# encoding: utf-8
+
+Encoding.default_external = 'utf-8'
+Encoding.default_internal = 'utf-8'
+
 require 'logger'
 require 'rumai'
 

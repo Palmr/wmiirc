@@ -12,7 +12,7 @@ status:
           elsif choice == "Reboot"
             `sudo shutdown -r now`
           else
-            dialog `cat ~/wmii_help.txt`
+            dialog `cat /home/nick/help/wmii.txt`
           end
         end
       end
